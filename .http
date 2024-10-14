@@ -1,0 +1,7 @@
+@host = http://localhost:3000
+
+### Get all users
+GET {{host}}/users
+
+### Get single user with it's playlists
+GET {{host}}/users/2
