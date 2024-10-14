@@ -30,3 +30,23 @@ router.get("/:id", async (req, res, next) => {
     next(e);
   }
 });
+
+router.post("/:id/playlists", async (req, res, next) => {
+  const { id } = req.params;
+  const { name, description } = req.body;
+
+  if (!name || !description) {
+    return next({
+      status: 404,
+      message: "Provid a name and description for the playlist",
+    });
+  }
+  try {
+    const playlist = await prisma.playlist.create({
+      data: { name, description, ownerId: +id },
+    });
+    res.status(201).json(playlist);
+  } catch (e) {
+    next(e);
+  }
+});

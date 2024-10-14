@@ -4,4 +4,13 @@
 GET {{host}}/users
 
 ### Get single user with it's playlists
-GET {{host}}/users/2
+GET {{host}}/users/1
+
+### Make new playlist for the user
+POST {{host}}/users/1/playlists
+Content-Type: application/json
+
+{
+  "name": "La mas perrona",
+  "description": "playlist vareada mix mp3 extracool"
+}
